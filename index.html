@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Cursor position tracker ( 06 August 2019 ) </title>
+	<style type="text/css"> 
+		body {
+			margin: 0;
+			height: 130vh;
+			background: yellow;
+			overflow: hidden;
+			cursor: crosshair;
+		}
+		.x,.y {
+			position: absolute;
+			height: 100%;
+			width: 1px;
+			background: red;
+		}
+		.y {
+			height: 1px;
+			width: 100%;
+		}
+		.from-left,
+		.from-right,
+		.from-top,
+		.from-bottom{
+			background: #000;
+			width: 80px;
+			text-align: center;
+			color: #fff;
+			padding: 5px;
+			position: absolute;
+			z-index: 1;
+		}
+
+		
+	</style>
+</head>
+<body>
+	<div class="from-left">10px</div>
+	<div class="from-right">12px</div>
+	<div class="from-top">FT: 10px</div>
+	<div class="from-bottom">FB: 20px</div>
+	<div class="x"></div>
+	<div class="y"></div>
+		
+	<script type="text/javascript"> 
+	
+		
+	
+	let body = document.body;
+	let x = document.querySelector('.x');
+	let y = document.querySelector('.y');
+	let fromLeft = document.querySelector('.from-left');
+	let fromRight = document.querySelector('.from-right');
+	let fromTop = document.querySelector('.from-top');
+	let fromBottom = document.querySelector('.from-bottom');
+	
+	body.addEventListener('mousemove',() => {
+		
+		x.style.left = `${event.clientX}px`;
+		y.style.top = `${event.clientY}px`;
+		fromLeft.style.left = `${event.clientX - 100}px`;
+		fromLeft.style.top = `${event.clientY - 13}px`;
+		fromLeft.innerHTML = `FL: ${event.clientX}px`;
+		fromRight.style.left = `${event.clientX + 12}px`;
+		fromRight.style.top = `${event.clientY - 13}px`;
+		fromRight.innerHTML = `FR: ${window.innerWidth - event.clientX}px`;
+		fromTop.style.top = `${event.clientY - 41}px`;
+		fromTop.style.left = `${event.clientX - 38}px`;
+		fromBottom.style.left = `${event.clientX - 38}px`;
+		fromBottom.style.top = `${event.clientY + 15}px`;
+		fromTop.innerHTML = `FT: ${event.clientY}px`;
+		fromBottom.innerHTML = `FB: ${window.innerHeight - event.clientY}px`;
+		
+	});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>
+	
+	
+</body>
+</html>
